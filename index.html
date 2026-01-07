@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PerfectRDP 개인정보처리방침</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --secondary: #0f172a;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --accent: #06b6d4;
+            --gradient-start: #1e3a8a;
+            --gradient-end: #0891b2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--white);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .update-date {
+            margin-top: 24px;
+            padding: 10px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Navigation */
+        .nav-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+        }
+
+        .nav-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-title::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .nav-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 8px 24px;
+            list-style: none;
+        }
+
+        .nav-list a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .nav-list a:hover {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .nav-list a::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Section */
+        .section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin: 28px 0 14px;
+            padding-left: 14px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .section p {
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .section ul, .section ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .section li::marker {
+            color: var(--primary);
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #e0f2fe 100%);
+            color: var(--secondary);
+            font-weight: 600;
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        tr:hover td {
+            background: var(--bg);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--primary);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 20px 0;
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .info-box strong {
+            color: var(--secondary);
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            border-radius: 16px;
+            padding: 36px 40px;
+            color: var(--white);
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .contact-card h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .contact-value {
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 28px 24px;
+            }
+
+            .nav-wrapper {
+                padding: 24px;
+            }
+
+            .nav-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card {
+                padding: 28px 24px;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 12px 14px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 2H3a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h7v2H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2h-2v-2h7a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-1 14H4V4h16v12z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+            </div>
+            <h1>PerfectRDP 개인정보처리방침</h1>
+            <p>비즈니스 원격 데스크톱 제어 앱</p>
+            <div class="update-date">시행일자: 2026년 1월 8일</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <nav class="nav-wrapper">
+            <div class="nav-title">목차</div>
+            <ul class="nav-list">
+                <li><a href="#section1">개인정보의 처리 목적</a></li>
+                <li><a href="#section2">수집하는 개인정보 항목</a></li>
+                <li><a href="#section3">개인정보의 보유 및 이용 기간</a></li>
+                <li><a href="#section4">개인정보의 제3자 제공</a></li>
+                <li><a href="#section5">개인정보 처리의 위탁</a></li>
+                <li><a href="#section6">개인정보의 파기</a></li>
+                <li><a href="#section7">정보주체의 권리와 행사방법</a></li>
+                <li><a href="#section8">개인정보의 안전성 확보 조치</a></li>
+                <li><a href="#section9">개인정보 보호책임자</a></li>
+                <li><a href="#section10">개인정보 처리방침 변경</a></li>
+            </ul>
+        </nav>
+
+        <section class="section" id="section1">
+            <div class="section-number">1</div>
+            <h2>개인정보의 처리 목적</h2>
+            <p>PerfectRDP(이하 "앱")는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+            
+            <h3>서비스 제공</h3>
+            <ul>
+                <li>원격 데스크톱 연결 서비스 제공</li>
+                <li>멀티 세션 관리 및 연결 정보 저장</li>
+                <li>확대 그룹, 돋보기 등 사용자 설정 저장</li>
+            </ul>
+
+            <h3>서비스 개선</h3>
+            <ul>
+                <li>서비스 이용 통계 분석</li>
+                <li>앱 성능 개선 및 오류 수정</li>
+                <li>신규 기능 개발을 위한 참고자료 활용</li>
+            </ul>
+
+            <h3>결제 및 라이선스 관리</h3>
+            <ul>
+                <li>Google Play 결제를 통한 라이선스 구매 처리</li>
+                <li>라이선스 유효성 확인 및 관리</li>
+            </ul>
+        </section>
+
+        <section class="section" id="section2">
+            <div class="section-number">2</div>
+            <h2>수집하는 개인정보 항목</h2>
+            <p>앱은 최소한의 개인정보만을 수집하며, 서비스 제공에 필요한 정보만을 처리합니다.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>수집 항목</th>
+                            <th>수집 목적</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>연결 정보</td>
+                            <td>원격 PC 주소, 포트 번호, 연결 이름</td>
+                            <td>RDP 연결 서비스 제공</td>
+                        </tr>
+                        <tr>
+                            <td>인증 정보</td>
+                            <td>사용자명, 비밀번호 (기기 내 암호화 저장)</td>
+                            <td>원격 PC 인증</td>
+                        </tr>
+                        <tr>
+                            <td>설정 정보</td>
+                            <td>확대 그룹, UI 설정, 사용자 환경설정</td>
+                            <td>사용자 맞춤 서비스 제공</td>
+                        </tr>
+                        <tr>
+                            <td>기기 정보</td>
+                            <td>기기 식별자, OS 버전</td>
+                            <td>라이선스 관리, 서비스 최적화</td>
+                        </tr>
+                        <tr>
+                            <td>결제 정보</td>
+                            <td>Google Play 구매 토큰</td>
+                            <td>라이선스 구매 확인</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <p><strong>※ 참고사항:</strong> 비밀번호는 사용자 기기 내에 암호화되어 저장되며, 외부 서버로 전송되지 않습니다. 모든 RDP 연결은 사용자 기기에서 원격 PC로 직접 이루어집니다.</p>
+            </div>
+        </section>
+
+        <section class="section" id="section3">
+            <div class="section-number">3</div>
+            <h2>개인정보의 보유 및 이용 기간</h2>
+            <p>앱은 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>보유 정보</th>
+                            <th>보유 기간</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>연결 및 인증 정보</td>
+                            <td>앱 삭제 시까지</td>
+                            <td>사용자 기기 내 저장</td>
+                        </tr>
+                        <tr>
+                            <td>사용자 설정 정보</td>
+                            <td>앱 삭제 시까지</td>
+                            <td>사용자 기기 내 저장</td>
+                        </tr>
+                        <tr>
+                            <td>라이선스 정보</td>
+                            <td>서비스 종료 시까지</td>
+                            <td>Google Play 연동</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="section4">
+            <div class="section-number">4</div>
+            <h2>개인정보의 제3자 제공</h2>
+            <p>앱은 원칙적으로 이용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.</p>
+            
+            <ul>
+                <li>이용자가 사전에 동의한 경우</li>
+                <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>※ 중요:</strong> PerfectRDP는 원격 데스크톱 연결을 사용자 기기에서 원격 PC로 직접 수행하며, 중간 서버를 경유하지 않습니다. 따라서 연결 정보나 원격 데스크톱 화면 데이터가 제3자에게 전달되지 않습니다.</p>
+            </div>
+        </section>
+
+        <section class="section" id="section5">
+            <div class="section-number">5</div>
+            <h2>개인정보 처리의 위탁</h2>
+            <p>앱은 서비스 향상을 위해 아래와 같이 개인정보 처리 업무를 위탁하고 있습니다.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>수탁업체</th>
+                            <th>위탁 업무</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Google LLC</td>
+                            <td>결제 처리 (Google Play 인앱 결제)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="section6">
+            <div class="section-number">6</div>
+            <h2>개인정보의 파기</h2>
+            <p>앱은 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.</p>
+
+            <h3>파기 절차</h3>
+            <p>이용자가 입력한 정보는 목적 달성 후 별도의 DB에 옮겨져 내부 방침 및 기타 관련 법령에 따라 일정기간 저장된 후 혹은 즉시 파기됩니다.</p>
+
+            <h3>파기 방법</h3>
+            <ul>
+                <li>전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용합니다.</li>
+                <li>앱 삭제 시 기기 내 저장된 모든 개인정보가 자동으로 삭제됩니다.</li>
+            </ul>
+        </section>
+
+        <section class="section" id="section7">
+            <div class="section-number">7</div>
+            <h2>정보주체의 권리와 행사방법</h2>
+            <p>이용자는 개인정보주체로서 다음과 같은 권리를 행사할 수 있습니다.</p>
+
+            <ul>
+                <li><strong>개인정보 열람 요구:</strong> 앱 내 설정에서 저장된 연결 정보 확인 가능</li>
+                <li><strong>개인정보 정정·삭제 요구:</strong> 앱 내에서 직접 수정 및 삭제 가능</li>
+                <li><strong>개인정보 처리정지 요구:</strong> 앱 삭제를 통해 모든 개인정보 처리 정지 가능</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>권리 행사 방법:</strong> 개인정보 관련 문의 및 요청은 하단의 개인정보 보호책임자 이메일로 연락해 주시기 바랍니다.</p>
+            </div>
+        </section>
+
+        <section class="section" id="section8">
+            <div class="section-number">8</div>
+            <h2>개인정보의 안전성 확보 조치</h2>
+            <p>앱은 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
+
+            <h3>기술적 조치</h3>
+            <ul>
+                <li>비밀번호의 암호화 저장 (AES-256 암호화)</li>
+                <li>Microsoft RDP 프로토콜의 표준 보안 기능 활용</li>
+                <li>네트워크 전송 시 TLS 암호화 적용</li>
+            </ul>
+
+            <h3>관리적 조치</h3>
+            <ul>
+                <li>개인정보 취급 직원의 최소화</li>
+                <li>정기적인 보안 점검 실시</li>
+            </ul>
+        </section>
+
+        <section class="section" id="section9">
+            <div class="section-number">9</div>
+            <h2>개인정보 보호책임자</h2>
+            <p>앱은 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+        </section>
+
+        <div class="contact-card">
+            <h2>📧 개인정보 보호책임자</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="contact-label">서비스명</div>
+                        <div class="contact-value">PerfectRDP</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="contact-label">이메일</div>
+                        <div class="contact-value"><a href="mailto:flyefriendsmaster@gmail.com">flyefriendsmaster@gmail.com</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section" id="section10" style="margin-top: 24px;">
+            <div class="section-number">10</div>
+            <h2>개인정보 처리방침 변경</h2>
+            <p>이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>버전</th>
+                            <th>시행일</th>
+                            <th>변경 내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>v1.0</td>
+                            <td>2026년 1월 8일</td>
+                            <td>최초 제정</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 PerfectRDP. All rights reserved.</p>
+        <p>비즈니스 사용자를 위한 원격 데스크톱 제어 앱</p>
+    </footer>
+</body>
+</html>
+
